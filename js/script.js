@@ -51,11 +51,6 @@
           if (inView) el.classList.add("is-visible");
         });
       }, 100);
-
-      // Start falling rose petals effect
-      if (!prefersReducedMotion) {
-        startFallingPetals();
-      }
     }, revealAt);
   }
 
@@ -171,70 +166,6 @@
       document.body.removeChild(link);
       URL.revokeObjectURL(url);
     });
-  }
-
-  /* ----------------------------------------------------------------
-     FALLING ROSE PETALS — beautiful red petals falling effect
-     ---------------------------------------------------------------- */
-  function startFallingPetals() {
-    var petalsContainer = document.createElement("div");
-    petalsContainer.className = "rose-petals-container";
-    petalsContainer.setAttribute("aria-hidden", "true");
-    document.body.appendChild(petalsContainer);
-
-    var petalColors = ["#8B0000", "#DC143C", "#C41E3A", "#A52A2A", "#B22222"];
-    
-    function createPetal() {
-      var petal = document.createElement("div");
-      petal.className = "rose-petal";
-      
-      // Random properties
-      var size = Math.random() * 12 + 8; // 8-20px
-      var left = Math.random() * 100; // 0-100%
-      var animDuration = Math.random() * 8 + 10; // 10-18 seconds
-      var animDelay = Math.random() * 5; // 0-5 seconds
-      var rotation = Math.random() * 360; // 0-360 degrees
-      var swayDistance = Math.random() * 100 + 50; // 50-150px horizontal sway
-      var color = petalColors[Math.floor(Math.random() * petalColors.length)];
-      var opacity = Math.random() * 0.4 + 0.6; // 0.6-1.0
-      
-      petal.style.cssText = [
-        "width:" + size + "px",
-        "height:" + (size * 1.2) + "px",
-        "left:" + left + "%",
-        "background:" + color,
-        "opacity:" + opacity,
-        "animation-duration:" + animDuration + "s",
-        "animation-delay:" + animDelay + "s",
-        "--sway-distance:" + swayDistance + "px",
-        "--rotation-start:" + rotation + "deg",
-        "--rotation-end:" + (rotation + 720 + Math.random() * 360) + "deg"
-      ].join(";");
-      
-      petalsContainer.appendChild(petal);
-      
-      // Remove petal after animation completes
-      setTimeout(function() {
-        if (petal.parentNode) {
-          petal.parentNode.removeChild(petal);
-        }
-      }, (animDuration + animDelay) * 1000);
-    }
-    
-    // Create initial batch of petals
-    for (var i = 0; i < 8; i++) {
-      setTimeout(createPetal, i * 300);
-    }
-    
-    // Continue creating petals periodically
-    var petalInterval = setInterval(function() {
-      createPetal();
-    }, 1500);
-    
-    // Optional: Stop creating petals after 2 minutes to save resources
-    setTimeout(function() {
-      clearInterval(petalInterval);
-    }, 120000); // 2 minutes
   }
 
   /* ----------------------------------------------------------------
