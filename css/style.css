@@ -1521,11 +1521,19 @@ svg {
 
 .reception-card__corner-lines {
   position: absolute;
-  top: 16px;
-  left: 16px;
   width: 70px;
   height: 70px;
   pointer-events: none;
+}
+
+.reception-card__corner-lines--top-left {
+  top: 16px;
+  left: 16px;
+}
+
+.reception-card__corner-lines--bottom-right {
+  bottom: 16px;
+  right: 16px;
 }
 
 .reception-card__tag {
