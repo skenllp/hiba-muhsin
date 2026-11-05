@@ -947,6 +947,7 @@ svg {
   color: var(--paper);
   max-width: 100%;
   padding-inline: 1.5rem;
+  padding-bottom: clamp(3rem, 6vw, 4.5rem);
 }
 
 .ayah__frame {
@@ -1005,6 +1006,8 @@ svg {
    ============================================================ */
 .couple {
   background: var(--paper);
+  padding-top: clamp(6rem, 12vw, 9rem);
+  padding-bottom: 1rem !important;
 }
 
 .couple__grid {
@@ -1491,6 +1494,8 @@ svg {
    ============================================================ */
 .details {
   background: var(--paper);
+  padding-top: 1rem !important;
+  margin-top: -4rem;
 }
 
 /* ============================================================
